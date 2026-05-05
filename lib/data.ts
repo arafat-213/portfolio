@@ -109,6 +109,13 @@ export const projects: Project[] = [
     image: "/projects/samyama.png",
     technologies: ["Next.js", "Sanity.io", "Tailwind"],
     demoUrl: "https://www.samyamayogawellness.com/",
+  },
+  {
+    title: "Livestock Auction Ecosystem",
+    description: "A comprehensive admin suite for high-stakes livestock auctions, delivering a seamless management experience for one of North America’s largest shows.",
+    image: "/projects/auctions.png",
+    technologies: ["React", ".NET Core", "PostgreSQL", "Redux"],
+    demoUrl: "",
   }
 ];
 
