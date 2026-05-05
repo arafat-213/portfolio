@@ -116,6 +116,27 @@ export const projects: Project[] = [
     image: "/projects/auctions.png",
     technologies: ["React", ".NET Core", "PostgreSQL", "Redux"],
     demoUrl: "",
+  },
+  {
+    title: "Exhibition Management tool",
+    description: "A dual-platform system for a world-class exhibition, including back-office management tools and public registration portals for the 2026 show",
+    image: "/projects/horseshow.png",
+    technologies: ["React", ".NET Core", "PostgreSQL", "Redux"],
+    demoUrl: "",
+  },
+  {
+    title: "Youth Event Operations Suite",
+    description: "Integrated system to manage high-volume event participant entries, heat assignments, winner tracking, and certification workflows for a major exhibition",
+    image: "/projects/calfscramble.png",
+    technologies: ["React", ".NET Core", "PostgreSQL", "Redux"],
+    demoUrl: "",
+  },
+  {
+    title: "Luxury Skincare E-commerce Platform",
+    description: "A premium D2C skincare brand with an advanced e-commerce platform featuring subscription services, AI-driven product recommendations, and automated order fulfillment workflows",
+    image: "/projects/skincare.png",
+    technologies: ["React", "Node.js", "Stripe", "PostgreSQL"],
+    demoUrl: "",
   }
 ];
 
