@@ -13,49 +13,51 @@ export default function Contact() {
     name: "",
     email: "",
     message: "",
+    botcheck: "",
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Format the message for WhatsApp
-    const message = `Hello Tai Arfat,
+    setStatus("submitting");
+    setErrorMessage("");
 
-I'm reaching out from your portfolio website.
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-*Name:* ${formData.name}
-*Email:* ${formData.email}
+      const data = await response.json();
 
-*Message:*
-${formData.message}
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to send message");
+      }
 
-Looking forward to hearing from you!`;
+      setStatus("success");
+      setFormData({ name: "", email: "", message: "", botcheck: "" });
 
-    // Encode the message for URL
-    const encodedMessage = encodeURIComponent(message);
-    
-    // Create WhatsApp URL with pre-filled message
-    const whatsappUrl = `${personalInfo.whatsapp}?text=${encodedMessage}`;
-    
-    // Open WhatsApp in a new window/tab
-    window.open(whatsappUrl, '_blank');
-    
-    // Reset form and loading state
-    setFormData({ name: "", email: "", message: "" });
-    setIsSubmitting(false);
+      // Reset success state after 5 seconds
+      setTimeout(() => setStatus("idle"), 5000);
+    } catch (error) {
+      setStatus("error");
+      setErrorMessage(error instanceof Error ? error.message : "Something went wrong. Please try again.");
+    }
   };
 
   return (
     <section
       id="contact"
       className="min-h-screen flex items-center justify-center relative"
-      style={{ 
-        paddingTop: '6rem', 
-        paddingBottom: '6rem', 
-        paddingLeft: '1.5rem', 
-        paddingRight: '1.5rem' 
+      style={{
+        paddingTop: '6rem',
+        paddingBottom: '6rem',
+        paddingLeft: '1.5rem',
+        paddingRight: '1.5rem'
       }}
     >
       <div className="container max-w-4xl" style={{ marginLeft: 'auto', marginRight: 'auto' }}>
@@ -159,6 +161,18 @@ Looking forward to hearing from you!`;
             }}
           >
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+              {/* Honeypot field - visually hidden */}
+              <input
+                type="text"
+                name="botcheck"
+                className="hidden"
+                style={{ display: "none" }}
+                value={formData.botcheck}
+                onChange={(e) => setFormData({ ...formData, botcheck: e.target.value })}
+                tabIndex={-1}
+                autoComplete="off"
+              />
+
               <div>
                 <label
                   htmlFor="name"
@@ -225,16 +239,33 @@ Looking forward to hearing from you!`;
                 />
               </div>
 
+              {status === "success" && (
+                <div 
+                  className="!p-4 rounded-xl bg-green-500/10 border border-green-500/20 text-green-500 text-sm md:text-base"
+                  style={{ padding: '1rem' }}
+                >
+                  Your message is sent successfully! I&apos;ll get back to you soon.
+                </div>
+              )}
+              {status === "error" && (
+                <div 
+                  className="!p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-500 text-sm md:text-base"
+                  style={{ padding: '1rem' }}
+                >
+                  {errorMessage}
+                </div>
+              )}
+
               <motion.button
                 type="submit"
-                disabled={isSubmitting}
+                disabled={status === "submitting"}
                 className="w-full flex items-center justify-center rounded-xl bg-linear-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 transition-all text-white font-medium text-base md:text-lg disabled:opacity-50 disabled:cursor-not-allowed min-h-[56px] md:min-h-[64px]"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 style={{ padding: '1rem 2rem', gap: '0.75rem' }}
               >
                 <Send size={20} />
-                <span>{isSubmitting ? "Sending..." : "Send Message"}</span>
+                <span>{status === "submitting" ? "Sending..." : "Send Message"}</span>
               </motion.button>
             </form>
           </motion.div>
