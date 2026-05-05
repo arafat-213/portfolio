@@ -10,7 +10,7 @@ import {
   SiVuedotjs,
   SiRedux,
   SiTailwindcss,
-  SiJest,
+  SiFlutter,
   SiNodedotjs,
   SiExpress,
   SiDotnet,
@@ -20,7 +20,9 @@ import {
   SiTwilio,
   SiGithub,
   SiSanity,
+  SiClaude,
 } from "react-icons/si";
+import { TbBrandReactNative } from "react-icons/tb";
 import { FaCode, FaCloud, FaSitemap } from "react-icons/fa";
 
 interface IconProps {
@@ -34,7 +36,6 @@ const iconMap: { [key: string]: React.ComponentType<IconProps> } = {
   vue: SiVuedotjs,
   redux: SiRedux,
   tailwind: SiTailwindcss,
-  jest: SiJest,
   nodejs: SiNodedotjs,
   express: SiExpress,
   dotnet: SiDotnet,
@@ -47,6 +48,9 @@ const iconMap: { [key: string]: React.ComponentType<IconProps> } = {
   sanity: SiSanity,
   cursor: FaCode,
   microservices: FaSitemap,
+  reactnative: TbBrandReactNative,
+  flutter: SiFlutter,
+  claude: SiClaude
 };
 
 export default function Skills() {
@@ -63,11 +67,11 @@ export default function Skills() {
     <section
       id="skills"
       className="min-h-screen flex items-center justify-center relative"
-      style={{ 
-        paddingTop: '6rem', 
-        paddingBottom: '6rem', 
-        paddingLeft: '1.5rem', 
-        paddingRight: '1.5rem' 
+      style={{
+        paddingTop: '6rem',
+        paddingBottom: '6rem',
+        paddingLeft: '1.5rem',
+        paddingRight: '1.5rem'
       }}
     >
       <div className="container max-w-6xl" style={{ marginLeft: 'auto', marginRight: 'auto' }}>
@@ -93,7 +97,7 @@ export default function Skills() {
             const skillsBeforeThisCategory = skillCategories
               .slice(0, categoryIndex)
               .reduce((sum, cat) => sum + cat.skills.length, 0);
-            
+
             return (
               <motion.div
                 key={category.title}
@@ -117,7 +121,7 @@ export default function Skills() {
                       iconMap[skill.icon.toLowerCase()] || FaCode;
                     // Calculate global skill index for staggered animation delay
                     const globalSkillIndex = skillsBeforeThisCategory + skillIndex;
-                    
+
                     return (
                       <motion.div
                         key={skill.name}

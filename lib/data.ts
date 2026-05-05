@@ -14,10 +14,10 @@ export const skills = {
   frontend: [
     { name: "React.js", icon: "react" },
     { name: "Next.js", icon: "nextjs" },
+    { name: "React Native", icon: "reactnative" },
     { name: "Vue.js", icon: "vue" },
-    { name: "Redux", icon: "redux" },
     { name: "Tailwind", icon: "tailwind" },
-    { name: "Jest", icon: "jest" },
+    { name: "Flutter", icon: "flutter" },
   ],
   backend: [
     { name: "Node.js", icon: "nodejs" },
@@ -30,7 +30,7 @@ export const skills = {
   tools: [
     { name: "Azure DevOps", icon: "azure" },
     { name: "GCP", icon: "gcp" },
-    { name: "Twilio", icon: "twilio" },
+    { name: "Claude", icon: "claude" },
     { name: "GitHub Copilot", icon: "github" },
     { name: "Sanity.io", icon: "sanity" },
     { name: "Cursor", icon: "cursor" },
