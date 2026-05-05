@@ -7,10 +7,10 @@ import { Menu, X } from "lucide-react";
 const navItems = [
   { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
-  { name: "Experience", href: "#experience" },
-  { name: "Skills", href: "#skills" },
+  // { name: "Experience", href: "#experience" },
   { name: "Projects", href: "#projects" },
-  { name: "Education", href: "#education" },
+  { name: "Skills", href: "#skills" },
+  // { name: "Education", href: "#education" },
   { name: "Awards", href: "#awards" },
   { name: "Contact", href: "#contact" },
 ];
@@ -21,16 +21,16 @@ export default function Navbar() {
   const handleMobileNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     setIsMobileMenuOpen(false);
-    
+
     // Wait for menu to start closing, then scroll
     setTimeout(() => {
       const targetId = href.replace('#', '');
       const targetElement = document.getElementById(targetId);
-      
+
       if (targetElement) {
         const elementPosition = targetElement.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - 80; // Account for fixed navbar
-        
+
         window.scrollTo({
           top: offsetPosition,
           behavior: 'smooth'
