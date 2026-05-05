@@ -1,8 +1,73 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import { Linkedin, Mail, Download } from "lucide-react";
-import { personalInfo } from "@/lib/data";
+import { personalInfo, heroStats } from "@/lib/data";
+import { useEffect, useRef } from "react";
+import { useInView } from "framer-motion";
+
+function StatCounter({
+  value,
+  suffix,
+  label,
+}: {
+  value: number;
+  suffix: string;
+  label: string;
+}) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+  const motionValue = useMotionValue(0);
+  const rounded = useTransform(motionValue, (v) => {
+    if (value >= 1000) {
+      return Math.round(v).toLocaleString();
+    }
+    return Math.round(v).toString();
+  });
+
+  useEffect(() => {
+    if (isInView) {
+      const controls = animate(motionValue, value, {
+        duration: 2,
+        ease: "easeOut",
+      });
+      return controls.stop;
+    }
+  }, [isInView, motionValue, value]);
+
+  return (
+    <div
+      ref={ref}
+      style={{
+        textAlign: "center",
+        padding: "1rem 1.5rem",
+      }}
+    >
+      <div
+        style={{
+          fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
+          fontWeight: 700,
+          fontFamily: "var(--font-family-heading)",
+          marginBottom: "0.5rem",
+        }}
+      >
+        <motion.span className="gradient-text">{rounded}</motion.span>
+        <span className="gradient-text">{suffix}</span>
+      </div>
+      <div
+        style={{
+          fontSize: "0.75rem",
+          fontWeight: 500,
+          letterSpacing: "0.12em",
+          textTransform: "uppercase",
+          color: "rgba(255,255,255,0.4)",
+        }}
+      >
+        {label}
+      </div>
+    </div>
+  );
+}
 
 export default function Hero() {
   const containerVariants = {
@@ -30,13 +95,13 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative"
+      className="min-h-screen flex flex-col items-center justify-center relative"
       style={{ 
         overflow: 'hidden',
         paddingLeft: '1.5rem', 
         paddingRight: '1.5rem', 
         paddingTop: '6rem', 
-        paddingBottom: '6rem'
+        paddingBottom: '2rem'
       }}
     >
       {/* Animated Gradient Background */}
@@ -72,8 +137,9 @@ export default function Hero() {
         />
       </div>
 
+      {/* Main content */}
       <motion.div
-        className="relative z-10 max-w-4xl text-center"
+        className="relative z-10 max-w-4xl text-center flex-1 flex flex-col items-center justify-center"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -147,9 +213,53 @@ export default function Hero() {
         </motion.div>
       </motion.div>
 
+      {/* Stats Strip */}
+      <motion.div
+        className="relative z-10 w-full"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 1.2 }}
+        style={{
+          maxWidth: '56rem',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          marginBottom: '3rem',
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            borderTop: "1px solid rgba(255,255,255,0.06)",
+            paddingTop: "2rem",
+            flexWrap: "wrap",
+          }}
+        >
+          {heroStats.map((stat, idx) => (
+            <div
+              key={stat.label}
+              style={{
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <StatCounter
+                value={stat.value}
+                suffix={stat.suffix}
+                label={stat.label}
+              />
+              {idx < heroStats.length - 1 && (
+                <div className="stats-divider" />
+              )}
+            </div>
+          ))}
+        </div>
+      </motion.div>
+
       {/* Scroll Indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
+        className="relative z-10"
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
       >
@@ -165,4 +275,3 @@ export default function Hero() {
     </section>
   );
 }
-

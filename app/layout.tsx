@@ -15,9 +15,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Tai Arfat - Engineering Manager & Senior Full-Stack Developer",
-  description: "Experienced Engineering Manager and Senior Software Developer with 6+ years in full-stack and frontend web application development.",
-  keywords: ["Tai Arfat", "Engineering Manager", "Full-Stack Developer", "React", "Next.js", "Node.js", "Portfolio"],
+  title: "Tai Arfat - Senior Full-Stack Developer",
+  description: "Experienced Senior Software Developer with 6+ years in full-stack and frontend web application development.",
+  keywords: ["Tai Arfat", "Full-Stack Developer", "React", "Next.js", "Node.js", "Portfolio"],
   authors: [{ name: "Tai Arfat" }],
   creator: "Tai Arfat",
   publisher: "Tai Arfat",
@@ -33,18 +33,18 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Tai Arfat - Engineering Manager & Senior Full-Stack Developer",
-    description: "Experienced Engineering Manager and Senior Software Developer with 6+ years in full-stack and frontend web application development.",
+    title: "Tai Arfat - Senior Full-Stack Developer",
+    description: "Experienced Senior Software Developer with 6+ years in full-stack and frontend web application development.",
     type: "website",
     locale: "en_US",
     siteName: "Tai Arfat Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tai Arfat - Engineering Manager & Senior Full-Stack Developer",
-    description: "Experienced Engineering Manager and Senior Software Developer with 6+ years in full-stack and frontend web application development.",
+    title: "Tai Arfat - Senior Full-Stack Developer",
+    description: "Experienced Senior Software Developer with 6+ years in full-stack and frontend web application development.",
   },
-  metadataBase: process.env.NEXT_PUBLIC_SITE_URL 
+  metadataBase: process.env.NEXT_PUBLIC_SITE_URL
     ? new URL(process.env.NEXT_PUBLIC_SITE_URL)
     : undefined,
   alternates: {

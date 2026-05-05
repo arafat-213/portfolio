@@ -41,7 +41,7 @@ export const experience = [
   {
     company: "Bacancy",
     duration: "2021 - Present",
-    title: "Engineering Manager & Senior Full-Stack Developer",
+    title: "Senior Full-Stack Developer",
     bullets: [
       "Led a team of developers in building scalable web applications",
       "Architected and implemented high-performance frontend solutions using React and Next.js",
@@ -75,7 +75,7 @@ export const awards = [
   },
   {
     title: "Team of the Quarter",
-    year: "2024, 2025",
+    year: "2024, 2025, 2026",
     icon: "star",
   },
   {
@@ -85,5 +85,30 @@ export const awards = [
   },
 ];
 
+export const heroStats = [
+  { value: 7, suffix: "+", label: "Years of Experience" },
+  { value: 20, suffix: "+", label: "Production Applications" },
+  { value: 15, suffix: "+", label: "Happy Clients" },
+  { value: 50, suffix: "+", label: "Technologies Mastered" }
+];
 
+export interface Project {
+  title: string;
+  description: string;
+  image: string;
+  technologies: string[];
+  sourceUrl?: string;
+  demoUrl?: string;
+}
+
+export const projects: Project[] = [
+  {
+    title: "Samyama Yoga Retreats",
+    description:
+      "A modern SEO optimized website for a premium wellness and yoga retreat business based in Leh, Ladakh, catering to an international audience ",
+    image: "/projects/samyama.png",
+    technologies: ["Next.js", "Sanity.io", "Tailwind"],
+    demoUrl: "https://www.samyamayogawellness.com/",
+  }
+];
 

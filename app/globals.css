@@ -79,3 +79,92 @@ body {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+/* ───── Project Card Styles ───── */
+
+.project-card-image {
+  filter: grayscale(100%);
+  transition: filter 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-card:hover .project-card-image {
+  filter: grayscale(0%);
+  transform: scale(1.05);
+}
+
+.project-card:hover {
+  border-color: rgba(139, 124, 247, 0.35) !important;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(102, 126, 234, 0.08);
+}
+
+.project-card:hover .project-card-title {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.project-card:hover .project-card-link {
+  color: #a594fd;
+}
+
+.project-card:hover .project-card-arrow {
+  transform: translateX(4px);
+}
+
+/* Line clamp */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ───── Embla Carousel ───── */
+
+.embla {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.embla__slide {
+  min-width: 0;
+  flex: 0 0 100%;
+}
+
+@media (min-width: 640px) {
+  .embla__slide {
+    flex: 0 0 calc(50% - 0.625rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .embla__slide {
+    flex: 0 0 calc(33.333% - 0.834rem);
+  }
+}
+
+/* ───── Stats Counter ───── */
+
+.stats-divider {
+  width: 1px;
+  height: 3.5rem;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255, 255, 255, 0.12),
+    transparent
+  );
+}
+
+@media (max-width: 639px) {
+  .stats-divider {
+    display: none;
+  }
+}
