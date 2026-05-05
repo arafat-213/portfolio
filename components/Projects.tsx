@@ -22,7 +22,7 @@ const techColors: Record<string, string> = {
   "Sanity.io": "rgba(245,128,96,0.85)",
   Stripe: "rgba(148,130,255,0.85)",
   "Vue.js": "rgba(65,184,131,0.85)",
-  "Socket.io": "rgba(200,200,200,0.85)",
+  "Socket.io": "rgba(1, 255, 13, 0.85)",
   MongoDB: "rgba(77,175,80,0.85)",
   ".NET Core": "rgba(130,100,245,0.85)",
   PostgreSQL: "rgba(100,160,240,0.85)",
@@ -220,7 +220,6 @@ export default function Projects() {
     loop: true,
     align: "start",
     slidesToScroll: 1,
-    containScroll: "trimSnaps",
   });
 
   const [canScrollPrev, setCanScrollPrev] = useState(false);

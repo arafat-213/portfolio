@@ -130,23 +130,25 @@ body {
 
 .embla__container {
   display: flex;
-  gap: 1.25rem;
+  margin-left: -0.625rem;
 }
 
 .embla__slide {
-  min-width: 0;
   flex: 0 0 100%;
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+  min-width: 0;
 }
 
 @media (min-width: 640px) {
   .embla__slide {
-    flex: 0 0 calc(50% - 0.625rem);
+    flex: 0 0 50%;
   }
 }
 
 @media (min-width: 1024px) {
   .embla__slide {
-    flex: 0 0 calc(33.333% - 0.834rem);
+    flex: 0 0 33.3333%;
   }
 }
 

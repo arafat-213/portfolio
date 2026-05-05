@@ -111,6 +111,14 @@ export const projects: Project[] = [
     demoUrl: "https://www.samyamayogawellness.com/",
   },
   {
+    title: "Bluff Master",
+    description: "Multiplayer social deduction game where players describe a secret word, expose impostors, or deceive others to survive and score points",
+    image: "/projects/bluff_master.png",
+    technologies: ["React", "Socket.io"],
+    demoUrl: "https://impostor-game-bay.vercel.app/",
+    sourceUrl: "https://github.com/arafat-213/impostor-game"
+  },
+  {
     title: "Livestock Auction Ecosystem",
     description: "A comprehensive admin suite for high-stakes livestock auctions, delivering a seamless management experience for one of North America’s largest shows.",
     image: "/projects/auctions.png",
@@ -132,11 +140,18 @@ export const projects: Project[] = [
     demoUrl: "",
   },
   {
-    title: "Luxury Skincare E-commerce Platform",
+    title: "Luxury Skincare E-commerce",
     description: "A premium D2C skincare brand with an advanced e-commerce platform featuring subscription services, AI-driven product recommendations, and automated order fulfillment workflows",
     image: "/projects/skincare.png",
     technologies: ["React", "Node.js", "Stripe", "PostgreSQL"],
     demoUrl: "",
+  },
+  {
+    title: "Legal Practice Digital Branding",
+    description: "A comprehensive digital presence for a legal practice, establishing authority and trust through a modern, professional online platform",
+    image: "/projects/advocate.png",
+    technologies: ["Next.js", "Sanity.io", "Tailwind"],
+    demoUrl: "https://advocate-danish-arafat213s-projects.vercel.app/",
   }
 ];
 
