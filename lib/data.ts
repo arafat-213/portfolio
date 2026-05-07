@@ -89,7 +89,7 @@ export const heroStats = [
   { value: 7, suffix: "+", label: "Years of Experience" },
   { value: 20, suffix: "+", label: "Production Applications" },
   { value: 15, suffix: "+", label: "Happy Clients" },
-  { value: 50, suffix: "+", label: "Technologies Mastered" }
+  { value: 10, suffix: "+", label: "Technologies Mastered" }
 ];
 
 export interface Project {
